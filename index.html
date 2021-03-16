@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Drum Kit</title>
+</head>
+<body>
+   <div class="container">
+       <div class="keys">
+           <div class="key" data-key="65">
+               <audio data-key="65" src="./sounds/clap.wav" preload="auto"></audio>
+               <kbd>A</kbd>
+               <p>CLAP</p>
+           </div>
+           <div class="key" data-key="83">
+            <audio data-key="83" src="./sounds/hihat.wav" preload="auto"></audio>
+               <kbd>S</kbd>
+               <p>HIHAT</p>
+           </div>
+           <div class="key" data-key="68">
+            <audio data-key="68" src="./sounds/kick.wav" preload="auto"></audio>
+               <kbd>D</kbd>
+               <p>KICK</p>
+           </div>
+           <div class="key" data-key="70">
+            <audio data-key="70" src="./sounds/openhat.wav" preload="auto"></audio>
+               <kbd>F</kbd>
+               <p>OPENHAT</p>
+           </div>
+           <div class="key" data-key="71">
+            <audio data-key="71" src="./sounds/boom.wav" preload="auto"></audio>
+               <kbd>G</kbd>
+               <p>BOOM</p>
+           </div>
+           <div class="key" data-key="72">
+            <audio data-key="72" src="./sounds/ride.wav" preload="auto"></audio>
+               <kbd>H</kbd>
+               <p>RIDE</p>
+           </div>
+           <div class="key" data-key="74">
+            <audio data-key="74" src="./sounds/snare.wav" preload="auto"></audio>
+               <kbd>J</kbd>
+               <p>SNARE</p>
+           </div>
+           <div class="key" data-key="75">
+            <audio data-key="75" src="./sounds/tom.wav" preload="auto"></audio>
+               <kbd>K</kbd>
+               <p>TOM</p>
+           </div>
+           <div class="key" data-key="76">
+            <audio data-key="76" src="./sounds/tink.wav" preload="auto"></audio>
+               <kbd>L</kbd>
+               <p>TINK</p>
+           </div>
+       </div>
+   </div>
+
+   <script>
+
+    window.addEventListener('keydown',(e) => {
+        let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        let key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+        key.classList.add('afterPress')
+        if(!audio) return;
+        audio.currentTime = 0
+        audio.play()
+    });
+
+
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend',()=> {
+            key.classList.remove('afterPress')
+        })
+    )
+
+
+    //     function playAKey(keyId,soundId,keyCodeId){
+    //         document.addEventListener("keydown", function(event) {
+    //         if(event.keyCode == keyCodeId){
+    //             if(soundId.paused){
+    //                 soundId.play()
+    //             } else {
+    //                 soundId.currentTime = 0
+    //             }
+    //            keyId.classList.add('afterPress')
+    //            setTimeout(function(){
+    //                 keyId.classList.remove('afterPress')
+    //            }, 150)
+    //         }
+    // })
+    //     }
+
+
+    //    let aKey = document.querySelector('#a-key')
+    //    let clap = document.getElementById('clap')
+    //    let aKeyCode = 65
+    //    playAKey(aKey,clap,aKeyCode)
+
+    //    let sKey = document.querySelector('#s-key')
+    //    let hihat = document.getElementById('hihat')
+    //    let sKeyCode = 83
+    //    playAKey(sKey,hihat,sKeyCode)
+
+    //    let dkey = document.getElementById('d-key')
+    //    let kick = document.getElementById('kick')
+    //    let dKeyCode = 68
+    //    playAKey(dkey,kick,dKeyCode)
+
+    //    let fKey = document.getElementById('f-key')
+    //    let openhat = document.getElementById('openhat')
+    //    let fKeyCode = 70
+    //    playAKey(fKey,openhat,fKeyCode)
+
+    //    let gKey = document.getElementById('g-key')
+    //    let boom = document.getElementById('boom')
+    //    let gKeyCode = 71
+    //    playAKey(gKey,boom,gKeyCode)
+
+    //    let hKey = document.getElementById('h-key')
+    //    let ride = document.getElementById('ride')
+    //    let hKeyCode = 72
+    //    playAKey(hKey,ride,hKeyCode)
+
+    //    let jKey = document.getElementById('j-key')
+    //    let snare = document.getElementById('snare')
+    //    let jKeyCode = 74
+    //    playAKey(jKey,snare,jKeyCode)
+
+    //    let kKey = document.getElementById('k-key')
+    //    let tom = document.getElementById('tom')
+    //    let kKeyCode = 75
+    //    playAKey(kKey,tom,kKeyCode)
+
+    //    let lKey = document.getElementById('l-key')
+    //    let tink = document.getElementById('tink')
+    //    let lKeyCode = 76
+    //    playAKey(lKey,tink,lKeyCode)
+   </script> 
+</body>
+</html>
