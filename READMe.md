@@ -1,0 +1,1 @@
+This web app enables you to play different sounds using your keyboards. during creating this project I learnt a lot how to manipulate the DOM with JS as well using CSS to style the interface of the project. I am certain is a great project that pushes you think and expands your skillset on the frontend.
